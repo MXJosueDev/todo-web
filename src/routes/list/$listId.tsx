@@ -40,7 +40,7 @@ function List() {
         if (data) {
             listsStore.updateList(params.listId, data.title, true); // TODO: Update on update
         }
-    }, [data, listsStore, params.listId]);
+    }, []);
 
     return (
         <Container className="w-full mt-10">

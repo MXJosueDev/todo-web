@@ -16,9 +16,7 @@ export default function DynamicTime({ date }: Props) {
         const updateRelativeTime = () => {
             const formatedTime = format(date);
 
-            if (relativeTime !== formatedTime) {
-                setRelativeTime(formatedTime);
-            }
+            setRelativeTime(formatedTime);
         };
 
         updateRelativeTime();
@@ -26,7 +24,7 @@ export default function DynamicTime({ date }: Props) {
         const intervalId = setInterval(updateRelativeTime, 1000);
 
         return () => clearInterval(intervalId);
-    }, [date, relativeTime]);
+    }, [date]);
 
     return relativeTime;
 }
