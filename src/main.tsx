@@ -16,6 +16,7 @@ const router = createRouter({
     context: {
         queryClient: queryClient,
     },
+    basepath: import.meta.env.PROD ? '/todo-web/' : '/',
 });
 
 declare module '@tanstack/react-router' {
