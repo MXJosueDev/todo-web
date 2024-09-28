@@ -10,101 +10,101 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root';
-import { Route as IndexImport } from './routes/index';
-import { Route as MyListsIndexImport } from './routes/my-lists/index';
-import { Route as ListListIdImport } from './routes/list/$listId';
+import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
+import { Route as MyListsIndexImport } from './routes/my-lists/index'
+import { Route as ListListIdImport } from './routes/list/$listId'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
-    path: '/',
-    getParentRoute: () => rootRoute,
-} as any);
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const MyListsIndexRoute = MyListsIndexImport.update({
-    path: '/my-lists/',
-    getParentRoute: () => rootRoute,
-} as any);
+  path: '/my-lists/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const ListListIdRoute = ListListIdImport.update({
-    path: '/list/$listId',
-    getParentRoute: () => rootRoute,
-} as any);
+  path: '/list/$listId',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-    interface FileRoutesByPath {
-        '/': {
-            id: '/';
-            path: '/';
-            fullPath: '/';
-            preLoaderRoute: typeof IndexImport;
-            parentRoute: typeof rootRoute;
-        };
-        '/list/$listId': {
-            id: '/list/$listId';
-            path: '/list/$listId';
-            fullPath: '/list/$listId';
-            preLoaderRoute: typeof ListListIdImport;
-            parentRoute: typeof rootRoute;
-        };
-        '/my-lists/': {
-            id: '/my-lists/';
-            path: '/my-lists';
-            fullPath: '/my-lists';
-            preLoaderRoute: typeof MyListsIndexImport;
-            parentRoute: typeof rootRoute;
-        };
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
     }
+    '/list/$listId': {
+      id: '/list/$listId'
+      path: '/list/$listId'
+      fullPath: '/list/$listId'
+      preLoaderRoute: typeof ListListIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/my-lists/': {
+      id: '/my-lists/'
+      path: '/my-lists'
+      fullPath: '/my-lists'
+      preLoaderRoute: typeof MyListsIndexImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-    '/': typeof IndexRoute;
-    '/list/$listId': typeof ListListIdRoute;
-    '/my-lists': typeof MyListsIndexRoute;
+  '/': typeof IndexRoute
+  '/list/$listId': typeof ListListIdRoute
+  '/my-lists': typeof MyListsIndexRoute
 }
 
 export interface FileRoutesByTo {
-    '/': typeof IndexRoute;
-    '/list/$listId': typeof ListListIdRoute;
-    '/my-lists': typeof MyListsIndexRoute;
+  '/': typeof IndexRoute
+  '/list/$listId': typeof ListListIdRoute
+  '/my-lists': typeof MyListsIndexRoute
 }
 
 export interface FileRoutesById {
-    __root__: typeof rootRoute;
-    '/': typeof IndexRoute;
-    '/list/$listId': typeof ListListIdRoute;
-    '/my-lists/': typeof MyListsIndexRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/list/$listId': typeof ListListIdRoute
+  '/my-lists/': typeof MyListsIndexRoute
 }
 
 export interface FileRouteTypes {
-    fileRoutesByFullPath: FileRoutesByFullPath;
-    fullPaths: '/' | '/list/$listId' | '/my-lists';
-    fileRoutesByTo: FileRoutesByTo;
-    to: '/' | '/list/$listId' | '/my-lists';
-    id: '__root__' | '/' | '/list/$listId' | '/my-lists/';
-    fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/list/$listId' | '/my-lists'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/list/$listId' | '/my-lists'
+  id: '__root__' | '/' | '/list/$listId' | '/my-lists/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-    IndexRoute: typeof IndexRoute;
-    ListListIdRoute: typeof ListListIdRoute;
-    MyListsIndexRoute: typeof MyListsIndexRoute;
+  IndexRoute: typeof IndexRoute
+  ListListIdRoute: typeof ListListIdRoute
+  MyListsIndexRoute: typeof MyListsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-    IndexRoute: IndexRoute,
-    ListListIdRoute: ListListIdRoute,
-    MyListsIndexRoute: MyListsIndexRoute,
-};
+  IndexRoute: IndexRoute,
+  ListListIdRoute: ListListIdRoute,
+  MyListsIndexRoute: MyListsIndexRoute,
+}
 
 export const routeTree = rootRoute
-    ._addFileChildren(rootRouteChildren)
-    ._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
