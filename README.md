@@ -1,50 +1,58 @@
-# React + TypeScript + Vite
+# TODO's Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and efficient web application to manage your tasks. Using Vite + React.
 
-Currently, two official plugins are available:
+## Features
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Task Management**: Create, update, and delete tasks.
+-   **Lists**: Organize tasks into different lists.
+-   **Responsive Design**: Works on both desktop and mobile devices.
+-   **Support**: Report bugs or suggest features on the GitHub repository.
 
-## Expanding the ESLint configuration
+## Local Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Follow these steps to set up the project locally:
 
--   Configure the top-level `parserOptions` property like this:
+1. **Clone the repository**:
 
-```js
-export default tseslint.config({
-    languageOptions: {
-        // other options...
-        parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-        },
-    },
-});
-```
+    ```sh
+    git clone https://github.com/MXJosueDev/todo-web.git
+    cd todo-web
+    ```
 
--   Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
--   Optionally add `...tseslint.configs.stylisticTypeChecked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Install dependencies**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+    ```sh
+    pnpm install
+    ```
 
-export default tseslint.config({
-    // Set the react version
-    settings: { react: { version: '18.3' } },
-    plugins: {
-        // Add the react plugin
-        react,
-    },
-    rules: {
-        // other rules...
-        // Enable its recommended rules
-        ...react.configs.recommended.rules,
-        ...react.configs['jsx-runtime'].rules,
-    },
-});
-```
+3. **Set up environment variables**:
+   Create a `.env.local` file in the root directory and add the following variables:
+
+    ```env
+    VITE_TASKS_API_URL=https://todo-backend-mxjosuedev.vercel.app/api
+    VITE_REFETCH_INTERVAL=60000
+    ```
+
+4. **Run the development server**:
+
+    ```sh
+    pnpm run dev
+    ```
+
+5. **Build for production**:
+
+    ```sh
+    pnpm run build
+    ```
+
+6. **Preview the production build**:
+    ```sh
+    pnpm run preview
+    ```
+
+For more details, refer to the [package.json](package.json) file.
+
+# Usage
+
+You are free of use this work under the [MIT License](/LICENSE)
