@@ -18,7 +18,7 @@ export const Route = createRootRouteWithContext<{
             </main>
 
             <Footer />
-            <TanStackRouterDevtools />
+            {import.meta.env.DEV && <TanStackRouterDevtools />}
         </div>
     ),
     notFoundComponent: NotFound,
