@@ -9,7 +9,7 @@ A simple and efficient web application to manage your tasks. Using Vite + React.
 -   **Responsive Design**: Works on both desktop and mobile devices.
 -   **Support**: Report bugs or suggest features on the GitHub repository.
 
-## Local Installation
+# Local Installation
 
 Follow these steps to set up the project locally:
 
