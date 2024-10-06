@@ -1,20 +1,15 @@
 import { List } from '@/routes/my-lists';
 import RecordedList from '../RecordedList';
-import { DateTime } from 'luxon';
 
 interface Props {
-    day: string;
+    date: string;
     lists: List[];
 }
 
-export default function DateList({ day, lists }: Props) {
-    const datetime = DateTime.fromJSDate(new Date(day));
-
+export default function DateList({ date, lists }: Props) {
     return (
         <div className="mb-4">
-            <h4 className="text-xl font-bold capitalize">
-                {datetime.toRelativeCalendar()}
-            </h4>
+            <h4 className="text-xl font-bold capitalize">{date}</h4>
 
             <div className="ms-2">
                 {lists.map((list) => (

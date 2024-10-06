@@ -2,6 +2,7 @@ import useListsStore, { StoredList } from '@/stores/listsStore';
 import { createFileRoute } from '@tanstack/react-router';
 import { Container } from 'react-grid-system';
 import DateList from '@/components/my-lists/DateLists';
+import { DateTime } from 'luxon';
 
 export const Route = createFileRoute('/my-lists/')({
     component: () => MyLists(),
@@ -22,18 +23,19 @@ function MyLists() {
     const listsByDates: Record<string, List[]> = {};
 
     sortedLists.forEach(([listId, list]) => {
-        const date = new Date(list.lastAccess).toLocaleDateString('en-US');
-        if (!listsByDates[date]) {
-            listsByDates[date] = [];
+        const date = new Date(list.lastAccess);
+        const dateKey = DateTime.fromJSDate(date).toRelativeCalendar() ?? '';
+        if (!listsByDates[dateKey]) {
+            listsByDates[dateKey] = [];
         }
 
-        listsByDates[date].push({ listId, ...list });
+        listsByDates[dateKey].push({ listId, ...list });
     });
 
     return (
         <Container className="w-full mt-10">
-            {Object.entries(listsByDates).map(([date, lists]) => (
-                <DateList key={date} day={date} lists={lists} />
+            {Object.entries(listsByDates).map(([dateKey, lists]) => (
+                <DateList key={dateKey} date={dateKey} lists={lists} />
             ))}
         </Container>
     );
